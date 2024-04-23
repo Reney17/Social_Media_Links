@@ -3,21 +3,55 @@
   padding: 0;
   box-sizing: border-box;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
   font-family: "Inter";
 }
+
 .container {
   height: 100vh;
-  color: white;
   background-color: hsl(0, 0%, 8%);
-  place-items: center;
+  color: white;
   display: grid;
+  place-items: center;
 }
+
 img {
-  width: 100px;
   height: 100px;
+  width: 100px;
   border-radius: 50%;
 }
+
+.ring {
+  position: relative;
+  height: 120px;
+  width: 120px;
+  display: grid;
+  place-content: center;
+  border-radius: 50%;
+}
+
+.ring::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  border-top: 2px solid transparent;
+  border-left: 2px solid hsl(75, 94%, 57%);
+  border-bottom: 2px solid hsl(75, 94%, 57%);
+  border-right: 2px solid hsl(75, 94%, 57%);
+  height: 120px;
+  width: 120px;
+  display: grid;
+  place-content: center;
+  border-radius: 50%;
+  animation: rotate-scale 5s linear infinite;
+}
+
 .main_card {
   background-color: hsl(0, 0%, 12%);
   padding: 2rem;
@@ -25,43 +59,51 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  min-width: 350px;
+  margin: 0 1rem;
+  max-width: 30vw;
 }
+
 #user_name {
-  margin-top: 1.5em;
+  margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
+
 #user_location {
   font-size: small;
+  font-weight: 700;
   color: hsl(75, 94%, 57%);
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
-ul {
-  list-style-type: none;
-  margin-top: 2rem;
+
+.links_container {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+  padding: 1rem 0;
   width: 100%;
 }
-a {
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-}
 
-/* Button styles */
-button {
+.link {
   background-color: hsl(0, 0%, 20%);
-  color: white;
   padding: 1rem;
-  border: none;
-  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 100%;
+  transition: background-color 0.5s ease-in-out;
 }
 
-/* Hover effect */
-button:hover {
+.link:hover {
   background-color: hsl(75, 94%, 57%);
+  color: hsl(0, 0%, 20%);
+}
+
+/* ANIMATION */
+@keyframes rotate-scale {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+  }
 }
